@@ -1,4 +1,4 @@
-package org.owlTryTwo;
+package main.java.ontology.practice;
 
 import java.util.Set;
 
@@ -6,10 +6,10 @@ public class Animal {
 	private String Species;
 	private String Size;
 	private Set<String> Food;
-	
-	public Animal(String species,String size, Set<String> food) {
+
+	public Animal(String species, String size, Set<String> food) {
 		super();
-		Species=species;
+		Species = species;
 		Size = size;
 		Food = food;
 	}
@@ -42,7 +42,5 @@ public class Animal {
 	public String toString() {
 		return "Animal [Species=" + Species + ", Size=" + Size + ", Food=" + Food + "]";
 	}
-	
-	
 
 }

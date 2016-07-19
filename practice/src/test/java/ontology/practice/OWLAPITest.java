@@ -1,6 +1,4 @@
-package org.owlTryTwo;
-
-import static org.junit.Assert.*;
+package test.java.ontology.practice;
 
 import java.io.File;
 import java.util.Collections;
@@ -37,24 +35,22 @@ import org.semanticweb.owlapi.util.OWLEntityRemover;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 
-public class OWLAPITest {
+import main.java.ontology.practice.AnimalQueries;
 
-	public static final File ONTOLOGY_ROOT = new File(
-			"/home/dpkun/practice/OWLAPI/owlTryTwo/resources/annotatedAnimals.owl");
-	public static final String CARNIVORE_IRI = new String("http://webprotege.stanford.edu/#Carnivore");
+public class OWLAPITest {
 
 	@Test
 	public void testReadOntology() throws OWLOntologyCreationException {
-		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 	}
 
 	@Test
 	public void testReasonerInitialization() throws OWLOntologyCreationException {
-		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
@@ -64,29 +60,33 @@ public class OWLAPITest {
 	public void testGetCarnivoreClassInstances() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 	}
 
 	@Test
 	public void testGetNamesOfIndividuals() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 
 		for (Node<OWLNamedIndividual> nod : ret) {
 			OWLEntity ent = nod.getRepresentativeElement();
-			//System.out.println(shortFormProvider.getShortForm(ent));
+			// System.out.println(shortFormProvider.getShortForm(ent));
 		}
 	}
 
@@ -94,12 +94,14 @@ public class OWLAPITest {
 	public void testGetDataProperties() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 
 		for (Node<OWLNamedIndividual> nod : ret) {
 			OWLEntity ent = nod.getRepresentativeElement();
@@ -107,7 +109,7 @@ public class OWLAPITest {
 			Set<OWLDataPropertyAssertionAxiom> DPs = ontology
 					.getDataPropertyAssertionAxioms(ent.asOWLNamedIndividual());
 			for (OWLDataPropertyAssertionAxiom DP : DPs) {
-				//System.out.println(DP.getProperty());
+				// System.out.println(DP.getProperty());
 			}
 		}
 	}
@@ -116,12 +118,14 @@ public class OWLAPITest {
 	public void testGetValuesOfDataProperties() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 
 		for (Node<OWLNamedIndividual> nod : ret) {
 			OWLEntity ent = nod.getRepresentativeElement();
@@ -130,7 +134,7 @@ public class OWLAPITest {
 					.getDataPropertyAssertionAxioms(ent.asOWLNamedIndividual());
 			for (OWLDataPropertyAssertionAxiom DP : DPs) {
 
-				//System.out.println(DP.getObject().getLiteral());
+				// System.out.println(DP.getObject().getLiteral());
 			}
 		}
 	}
@@ -139,12 +143,14 @@ public class OWLAPITest {
 	public void testGetObjectProperties() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 
 		for (Node<OWLNamedIndividual> nod : ret) {
 			OWLEntity ent = nod.getRepresentativeElement();
@@ -152,21 +158,23 @@ public class OWLAPITest {
 			Set<OWLObjectPropertyAssertionAxiom> OPs = ontology
 					.getObjectPropertyAssertionAxioms(ent.asOWLNamedIndividual());
 			for (OWLObjectPropertyAssertionAxiom OP : OPs) {
-				//System.out.println(OP.getProperty());
+				// System.out.println(OP.getProperty());
 			}
 		}
 	}
-	
+
 	@Test
-	public void testGetRangeOfObjectProperties() throws OWLOntologyCreationException{
+	public void testGetRangeOfObjectProperties() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 
 		for (Node<OWLNamedIndividual> nod : ret) {
 			OWLEntity ent = nod.getRepresentativeElement();
@@ -174,22 +182,24 @@ public class OWLAPITest {
 			Set<OWLObjectPropertyAssertionAxiom> OPs = ontology
 					.getObjectPropertyAssertionAxioms(ent.asOWLNamedIndividual());
 			for (OWLObjectPropertyAssertionAxiom OP : OPs) {
-				//System.out.println(OP.getObject().toString());
+				// System.out.println(OP.getObject().toString());
 			}
 		}
 	}
-	
+
 	@Test
-	public void testGetNameOfReferencedObject() throws OWLOntologyCreationException{
+	public void testGetNameOfReferencedObject() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
 
-		NodeSet<OWLNamedIndividual> ret = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
+		NodeSet<OWLNamedIndividual> ret = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
 
 		for (Node<OWLNamedIndividual> nod : ret) {
 			OWLEntity ent = nod.getRepresentativeElement();
@@ -197,43 +207,47 @@ public class OWLAPITest {
 			Set<OWLObjectPropertyAssertionAxiom> OPs = ontology
 					.getObjectPropertyAssertionAxioms(ent.asOWLNamedIndividual());
 			for (OWLObjectPropertyAssertionAxiom OP : OPs) {
-				
+
 				OWLIndividual range = OP.getObject();
-				//System.out.println(range.asOWLNamedIndividual().getIRI().getShortForm());
-				
-				
-			}}
-	}
-	
-	@Test
-	public void testGetDisjoint () throws OWLOntologyCreationException {
-		OWLDataFactory factory = OWLManager.getOWLDataFactory();
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
-		OWLReasonerFactory rf = new ReasonerFactory();
-		OWLReasoner treasoner = rf.createReasoner(ontology);
-		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
-		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
-		
-		NodeSet<OWLClass> disjointClasses = treasoner.getDisjointClasses(factory.getOWLClass(CARNIVORE_IRI));
-		for(Node<OWLClass> cls : disjointClasses){
-			OWLEntity ent = cls.getRepresentativeElement();
-			//System.out.println(shortFormProvider.getShortForm(ent));
+				// System.out.println(range.asOWLNamedIndividual().getIRI().getShortForm());
+
+			}
 		}
 	}
-	
+
 	@Test
-	public void testNotEatingAntelope () throws OWLOntologyCreationException {
+	public void testGetDisjoint() throws OWLOntologyCreationException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
-		
-		NodeSet<OWLNamedIndividual> instances = treasoner.getInstances(factory.getOWLClass(CARNIVORE_IRI));
-		
+
+		NodeSet<OWLClass> disjointClasses = treasoner
+				.getDisjointClasses(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
+		for (Node<OWLClass> cls : disjointClasses) {
+			OWLEntity ent = cls.getRepresentativeElement();
+			// System.out.println(shortFormProvider.getShortForm(ent));
+		}
+	}
+
+	@Test
+	public void testNotEatingAntelope() throws OWLOntologyCreationException {
+		OWLDataFactory factory = OWLManager.getOWLDataFactory();
+		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
+		OWLReasonerFactory rf = new ReasonerFactory();
+		OWLReasoner treasoner = rf.createReasoner(ontology);
+		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
+		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
+
+		NodeSet<OWLNamedIndividual> instances = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.CARNIVORE)));
+
 		Set<OWLEntity> antelopeEaters = new HashSet<OWLEntity>();
 		for (Node<OWLNamedIndividual> instance : instances) {
 			OWLEntity ent = instance.getRepresentativeElement();
@@ -241,104 +255,103 @@ public class OWLAPITest {
 			Set<OWLObjectPropertyAssertionAxiom> OPs = ontology
 					.getObjectPropertyAssertionAxioms(ent.asOWLNamedIndividual());
 			for (OWLObjectPropertyAssertionAxiom OP : OPs) {
-				
-				OWLIndividual range = OP.getObject();		
-				if(range.asOWLNamedIndividual().getIRI().getShortForm().equals("Antelope")){
-				 antelopeEaters.add(ent);	
+
+				OWLIndividual range = OP.getObject();
+				if (range.asOWLNamedIndividual().getIRI().getShortForm().equals("Antelope")) {
+					antelopeEaters.add(ent);
 				}
 			}
-		if(antelopeEaters.contains(ent)==false){
-			//System.out.println(shortFormProvider.getShortForm(ent));
-		}
+			if (antelopeEaters.contains(ent) == false) {
+				// System.out.println(shortFormProvider.getShortForm(ent));
+			}
 		}
 	}
-	
+
 	@Test
-	public void testReadAnimals() throws OWLOntologyCreationException{
-		OntologyReader reader= new OntologyReader();
-		for(Animal animal : reader.readAnimals()){
-		//System.out.println(animal.toString());
-		}
-	}
-	
-	/*@Test
 	public void testAddPlant() throws OWLOntologyCreationException, OWLOntologyStorageException {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
-		OWLReasonerFactory rf = new ReasonerFactory();
-		OWLReasoner treasoner = rf.createReasoner(ontology);
-		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
-		
-		//real addition starts here
-		
-		//get what we want to add
-		OWLNamedIndividual Rose = factory.getOWLNamedIndividual(IRI.create("http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4#Rose"));
-		OWLClassAssertionAxiom roseToPlants = factory.getOWLClassAssertionAxiom(factory.getOWLClass(AnimalsIRIs.FLOWER), Rose);
-		NodeSet<OWLNamedIndividual> waters= treasoner.getInstances(factory.getOWLClass(AnimalsIRIs.WATER));
-		OWLNamedIndividual freshWater = null;
-		for(Node<OWLNamedIndividual> water : waters){
-			OWLNamedIndividual watah = water.getRepresentativeElement();
-			if(watah.getIRI().getShortForm().toString().equals("FreshWater")){
-				freshWater = watah;
-			}
-		}
-		OWLObjectProperty roseDrinks = factory.getOWLObjectProperty(IRI.create("http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4#Drinks"));
-		OWLObjectPropertyAssertionAxiom roseDrinksFreshWater= factory.getOWLObjectPropertyAssertionAxiom(roseDrinks, Rose, freshWater);
-		
-		//create AddAxioms from the additions
-		AddAxiom classAssertionAxiom = new AddAxiom(ontology, roseToPlants);
-		AddAxiom drinkAssertionAxiom = new AddAxiom(ontology, roseDrinksFreshWater);
-		
-		//add the changes to the ontology
-		manager.applyChange(classAssertionAxiom);
-		manager.applyChange(drinkAssertionAxiom);
-		
-		//save the ontology
-		manager.saveOntology(ontology);
-	}
-	
-	@Test
-	public void testDeletePlant() throws OWLOntologyCreationException, OWLOntologyStorageException {
-		OWLDataFactory factory = OWLManager.getOWLDataFactory();
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasonerFactory rf = new ReasonerFactory();
 		OWLReasoner treasoner = rf.createReasoner(ontology);
 		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-		//Erasing starts here
-		//Get the individual to be removed		
+		// real addition starts here
+
+		// get what we want to add
+		OWLNamedIndividual Rose = factory.getOWLNamedIndividual(
+				IRI.create("http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4#Rose"));
+		OWLClassAssertionAxiom roseToPlants = factory.getOWLClassAssertionAxiom(
+				factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.FLOWER)), Rose);
+		NodeSet<OWLNamedIndividual> waters = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.WATER)));
+		OWLNamedIndividual freshWater = null;
+		for (Node<OWLNamedIndividual> water : waters) {
+			OWLNamedIndividual watah = water.getRepresentativeElement();
+			if (watah.getIRI().getShortForm().toString().equals("FreshWater")) {
+				freshWater = watah;
+			}
+		}
+		OWLObjectProperty roseDrinks = factory.getOWLObjectProperty(
+				IRI.create("http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4#Drinks"));
+		OWLObjectPropertyAssertionAxiom roseDrinksFreshWater = factory.getOWLObjectPropertyAssertionAxiom(roseDrinks,
+				Rose, freshWater);
+
+		// create AddAxioms from the additions
+		AddAxiom classAssertionAxiom = new AddAxiom(ontology, roseToPlants);
+		AddAxiom drinkAssertionAxiom = new AddAxiom(ontology, roseDrinksFreshWater);
+
+		// add the changes to the ontology
+		manager.applyChange(classAssertionAxiom);
+		manager.applyChange(drinkAssertionAxiom);
+
+		// save the ontology
+		manager.saveOntology(ontology);
+	}
+
+	@Test
+	public void testDeletePlant() throws OWLOntologyCreationException, OWLOntologyStorageException {
+		OWLDataFactory factory = OWLManager.getOWLDataFactory();
+		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
+		OWLReasonerFactory rf = new ReasonerFactory();
+		OWLReasoner treasoner = rf.createReasoner(ontology);
+		treasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
+
+		// Erasing starts here
+		// Get the individual to be removed
 		OWLNamedIndividual rose = factory.getOWLNamedIndividual(IRI.create("needToFindTheIndividual"));
-		NodeSet<OWLNamedIndividual> flowers= treasoner.getInstances(factory.getOWLClass(AnimalsIRIs.FLOWER));
-		for(Node<OWLNamedIndividual> water : flowers){
+		NodeSet<OWLNamedIndividual> flowers = treasoner
+				.getInstances(factory.getOWLClass(IRI.create(main.java.ontology.practice.AnimalsIRIs.FLOWER)));
+		for (Node<OWLNamedIndividual> water : flowers) {
 			OWLNamedIndividual flower = water.getRepresentativeElement();
-			if(flower.getIRI().getShortForm().toString().equals("Rose")){
+			if (flower.getIRI().getShortForm().toString().equals("Rose")) {
 				rose = flower;
 			}
 		}
-		
-		//create a remover
+
+		// create a remover
 		OWLEntityRemover eraser = new OWLEntityRemover(ontology);
-		
-		//visit the individual with the remover
+
+		// visit the individual with the remover
 		rose.accept(eraser);
-		
-		//Erase the individual from the ontology
+
+		// Erase the individual from the ontology
 		manager.applyChanges(eraser.getChanges());
-		
-		//save the new version of the ontology
+
+		// save the new version of the ontology
 		manager.saveOntology(ontology);
-	}*/
-	
+	}
+
 	@Test
-	public void testFirstQuery() throws OWLOntologyCreationException{
+	public void testFirstQuery() throws OWLOntologyCreationException {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ONTOLOGY_ROOT);
+		OWLOntology ontology = manager
+				.loadOntologyFromOntologyDocument(IRI.create(main.java.ontology.practice.AnimalsIRIs.ONTOLOGY_ROOT));
 		OWLReasoner reasoner = new Reasoner.ReasonerFactory().createReasoner(ontology);
 		AnimalQueries trialOne = new AnimalQueries(manager, ontology, reasoner);
 		trialOne.getNotCarnivoreInstances();
 	}
 }
-
-

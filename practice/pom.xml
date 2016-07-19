@@ -5,7 +5,6 @@
 	<groupId>Ontology</groupId>
 	<artifactId>practice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
 
 	<name>practice</name>
 	<url>http://maven.apache.org</url>
