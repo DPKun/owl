@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4"
+     versionIRI="http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4">
+    <Prefix name="" IRI="http://webprotege.stanford.edu/project/BQ9brKWW6pcSvWvKu3ajh4#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <DataProperty IRI="#Size"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Salmon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lion"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#seaweed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#Tree"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#water"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#Animal"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#EatsAnimal"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#tulip"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Antelope"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Drinks"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#EatsPlant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#Plant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#Flower"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Shark"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dolphin"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FreshWater"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Zebra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oak"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/#Carnivore"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/#Animal"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/#Carnivore"/>
+        <Class IRI="http://webprotege.stanford.edu/#Animal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/#Flower"/>
+        <Class IRI="http://webprotege.stanford.edu/#Plant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+        <Class IRI="http://webprotege.stanford.edu/#Animal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/#Plant"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/#Tree"/>
+        <Class IRI="http://webprotege.stanford.edu/#Plant"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="http://webprotege.stanford.edu/#Carnivore"/>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+        <NamedIndividual IRI="#Antelope"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+        <NamedIndividual IRI="#Dolphin"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#water"/>
+        <NamedIndividual IRI="#FreshWater"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Carnivore"/>
+        <NamedIndividual IRI="#Lion"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Tree"/>
+        <NamedIndividual IRI="#Oak"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+        <NamedIndividual IRI="#Salmon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Carnivore"/>
+        <NamedIndividual IRI="#Shark"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+        <NamedIndividual IRI="#Zebra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Flower"/>
+        <NamedIndividual IRI="#seaweed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/#Flower"/>
+        <NamedIndividual IRI="#tulip"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsPlant"/>
+        <NamedIndividual IRI="#Antelope"/>
+        <NamedIndividual IRI="#tulip"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsPlant"/>
+        <NamedIndividual IRI="#Dolphin"/>
+        <NamedIndividual IRI="#seaweed"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsAnimal"/>
+        <NamedIndividual IRI="#Lion"/>
+        <NamedIndividual IRI="#Antelope"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsAnimal"/>
+        <NamedIndividual IRI="#Lion"/>
+        <NamedIndividual IRI="#Zebra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsPlant"/>
+        <NamedIndividual IRI="#Salmon"/>
+        <NamedIndividual IRI="#seaweed"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsAnimal"/>
+        <NamedIndividual IRI="#Shark"/>
+        <NamedIndividual IRI="#Dolphin"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsAnimal"/>
+        <NamedIndividual IRI="#Shark"/>
+        <NamedIndividual IRI="#Salmon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#EatsPlant"/>
+        <NamedIndividual IRI="#Zebra"/>
+        <NamedIndividual IRI="#tulip"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#Drinks"/>
+        <NamedIndividual IRI="#tulip"/>
+        <NamedIndividual IRI="#FreshWater"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Size"/>
+        <NamedIndividual IRI="#Antelope"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Normal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Size"/>
+        <NamedIndividual IRI="#Dolphin"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Normal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Size"/>
+        <NamedIndividual IRI="#Lion"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Normal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Size"/>
+        <NamedIndividual IRI="#Salmon"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Small</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Size"/>
+        <NamedIndividual IRI="#Shark"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Large</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Size"/>
+        <NamedIndividual IRI="#Zebra"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Normal</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Drinks"/>
+        <Class IRI="http://webprotege.stanford.edu/#Plant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#EatsAnimal"/>
+        <Class IRI="http://webprotege.stanford.edu/#Carnivore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#EatsPlant"/>
+        <Class IRI="http://webprotege.stanford.edu/#Herbivore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Drinks"/>
+        <Class IRI="http://webprotege.stanford.edu/#water"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#EatsAnimal"/>
+        <Class IRI="http://webprotege.stanford.edu/#Animal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#EatsPlant"/>
+        <Class IRI="http://webprotege.stanford.edu/#Plant"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Size"/>
+        <Class IRI="http://webprotege.stanford.edu/#Animal"/>
+    </DataPropertyDomain>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#Animal</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Animal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#Carnivore</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Carnivore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#Flower</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Flower</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#Herbivore</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Herbivore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#Plant</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Plant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#Tree</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Tree</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/#water</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">water</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi -->
+
